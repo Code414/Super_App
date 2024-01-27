@@ -89,6 +89,9 @@ export default function RegisterForm() {
             return;
         }
         else{
+            //save data to local storage
+            window.localStorage.setItem("userInfo", JSON.stringify(formValues));
+            //If all fields are filled, navigate to Info Page
             navigate("/info");
         }
 
@@ -102,6 +105,7 @@ export default function RegisterForm() {
                 gap: "8px", 
                 flexDirection: "column"
             }}>
+
         <input
             value={formValues.name} 
                 onChange={(e) => {
@@ -114,11 +118,37 @@ export default function RegisterForm() {
         />
         <p>{errors.name}</p>
         <br />
-        <input value={formValues.username} onChange={(e) => { setFormValues((prev) => { return { ...prev, username: e.target.value }; }); }} type="text" placeholder="Username" /> <br />
+        <input 
+            value={formValues.username} 
+            onChange={(e) => {
+                 setFormValues((prev) => {
+                     return { ...prev, username: e.target.value }; 
+                }); 
+            }} 
+            type="text" 
+            placeholder="Username" /> 
+            <br />
         <p>{errors.username}</p>
-        <input value={formValues.email} onChange={(e) => { setFormValues((prev) => { return { ...prev, email: e.target.value }; }); }} type="text" placeholder="Email" /> <br />
+        <input 
+            value={formValues.email} 
+            onChange={(e) => { 
+                setFormValues((prev) => { 
+                    return { ...prev, email: e.target.value }; 
+                });
+            }} 
+            type="text" 
+            placeholder="Email" />
+             <br />
         <p>{errors.email}</p>
-        <input value={formValues.mobile} onChange={(e) => { setFormValues((prev) => { return { ...prev, mobile: e.target.value }; }); }} type="text" placeholder="Mobile" /> <br />
+        <input 
+            value={formValues.mobile} 
+            onChange={(e) => {
+                 setFormValues((prev) => { 
+                    return { ...prev, mobile: e.target.value }; 
+                    }); 
+                }} 
+                type="text" 
+                placeholder="Mobile" /> <br />
         <p>{errors.mobile}</p>
         <br />
         <label htmlFor="registerCheckBox">
@@ -130,7 +160,7 @@ export default function RegisterForm() {
                  setFormValues((prev) => {
                      return { ...prev, registerCheckBox: e.target.checked }; 
                      }); 
-                    }} 
+                }} 
                 />
             Share my registration data with Super App
         </label>
