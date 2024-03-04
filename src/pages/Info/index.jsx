@@ -91,6 +91,11 @@ function Info() {
 
         <button style={{ background: "green", padding: "12px", borderRadius: "12px", width:"none", marginTop:"12px" }}
           onClick = { () => {
+            //to save movies in local storage to use in showcase page
+            window.localStorage.setItem(
+              "selectedMovies",
+              JSON.stringify(selectedMovies)
+            );
             navigate("/showcase");
           }}
           disabled = {selectedMovies.length < 3}
